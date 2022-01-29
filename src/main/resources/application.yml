@@ -5,20 +5,21 @@ mp:
     connector: smallrye-mqtt
     host: localhost
     port: 1883
-    topic: word
-   uppercase-in:
-    connector: smallrye-mqtt
-    host: localhost
-    port: 1883
-    topic: uppercase-word
+    topic: test
   outgoing:
    source-out:
     connector: smallrye-mqtt
     host: localhost
     port: 1883
-    topic: word
-   uppercase-out:
-    connector: smallrye-mqtt
-    host: localhost
-    port: 1883
-    topic: uppercase-word
+    topic: test
+influx:
+ url: http://localhost:8086
+ user: root
+ password: root
+
+quarkus:
+ datasource:
+  db-kind: other
+  jdbc:
+   driver: org.sqlite.JDBC
+   url: jdbc:sqlite:test.db
