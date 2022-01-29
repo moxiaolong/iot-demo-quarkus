@@ -1,0 +1,24 @@
+mp:
+ messaging:
+  incoming:
+   source-in:
+    connector: smallrye-mqtt
+    host: localhost
+    port: 1883
+    topic: word
+   uppercase-in:
+    connector: smallrye-mqtt
+    host: localhost
+    port: 1883
+    topic: uppercase-word
+  outgoing:
+   source-out:
+    connector: smallrye-mqtt
+    host: localhost
+    port: 1883
+    topic: word
+   uppercase-out:
+    connector: smallrye-mqtt
+    host: localhost
+    port: 1883
+    topic: uppercase-word
