@@ -40,17 +40,16 @@ public class MyController {
         Data data = new Data();
         data.setSensorName("testSensor");
         data.setTemperature(temperature);
-        HashMap<String, String> tagMap = new HashMap<>();
+        HashMap<String, String> tagMap = new HashMap<>(1);
         tagMap.put("id", "1");
-        HashMap<String, Object> filedMap = new HashMap<>();
+        HashMap<String, Object> filedMap = new HashMap<>(1);
         filedMap.put("temperature", temperature);
-        //保存至Influx
-        influxDBConfig.insert("test", "temperature", tagMap, filedMap);
-        //发送至MQ
-        quoteRequestEmitter.send(String.valueOf(temperature));
-
         return Uni.createFrom().completionStage(CompletableFuture.supplyAsync(
                         () -> {
+                            //保存至Influx
+                            influxDBConfig.insert("test", "temperature", tagMap, filedMap);
+                            //发送至MQ
+                            quoteRequestEmitter.send(String.valueOf(temperature));
                             try {
                                 sqliteDb.getConnection().nativeSQL("update temperature_data set temperature=" + temperature + " where id =1");
                             } catch (SQLException e) {
