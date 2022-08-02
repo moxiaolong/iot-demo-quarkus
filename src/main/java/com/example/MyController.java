@@ -40,9 +40,9 @@ public class MyController {
         Data data = new Data();
         data.setSensorName("testSensor");
         data.setTemperature(temperature);
-        HashMap<String, String> tagMap = new HashMap<>();
+        HashMap<String, String> tagMap = new HashMap<>(1);
         tagMap.put("id", "1");
-        HashMap<String, Object> filedMap = new HashMap<>();
+        HashMap<String, Object> filedMap = new HashMap<>(1);
         filedMap.put("temperature", temperature);
         return Uni.createFrom().completionStage(CompletableFuture.supplyAsync(
                         () -> {
