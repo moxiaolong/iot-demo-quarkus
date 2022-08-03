@@ -18,6 +18,8 @@ influx:
  password: root
 
 quarkus:
+ http:
+  port: 8081
  datasource:
   db-kind: other
   jdbc:
